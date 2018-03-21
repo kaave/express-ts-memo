@@ -4,11 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "postinstall": "build",
     "start": "run-p dev:*",
     "dev:server": "cross-env NODE_ENV=development nodemon dist/server",
     "dev:watch": "cross-env NODE_ENV=development tsc -w",
     "dev:browser-sync": "browser-sync start --proxy 'localhost:4000' --files 'dist'",
+    "prebuild": "npm run clean",
     "build": "cross-env NODE_ENV=production tsc",
+    "clean": "rimraf -g dist",
     "tsc": "tsc"
   },
   "dependencies": {
@@ -21,6 +24,7 @@
     "cross-env": "^5.1.4",
     "nodemon": "^1.17.2",
     "npm-run-all": "^4.1.2",
+    "rimraf": "^2.6.2",
     "typescript": "^2.7.2"
   }
 }

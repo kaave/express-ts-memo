@@ -9,7 +9,17 @@ const router: Router = Router();
 // In this case it's /welcome
 router.get('/', (req: Request, res: Response) => {
     // Reply with a hello world when no name param is provided
-    res.send('Hello, World!');
+    // res.send('Hello, World!!!!');
+    res.send('<!DOCTYPE html>' +
+    '<html>' +
+    '<head>' +
+        '<title>Whyd Store</title>' +
+        '<link rel="stylesheet" type="text/css" href="public/style.css">' +
+    '</head>' +
+    '<body>' +
+    '<p>Hello World!!!</p>' +
+    '</body>' +
+    '</html>');
 });
 
 router.get('/:name', (req: Request, res: Response) => {

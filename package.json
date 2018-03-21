@@ -4,10 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "run-p start:*",
-    "start:server": "nodemon dist/server",
-    "start:watch": "tsc -w",
-    "build": "tsc",
+    "start": "run-p dev:*",
+    "dev:server": "cross-env NODE_ENV=development nodemon dist/server",
+    "dev:watch": "cross-env NODE_ENV=development tsc -w",
+    "dev:browser-sync": "browser-sync start --proxy 'localhost:4000' --files 'dist'",
+    "build": "cross-env NODE_ENV=production tsc",
     "tsc": "tsc"
   },
   "dependencies": {
@@ -16,6 +17,8 @@
   "devDependencies": {
     "@types/express": "^4.11.1",
     "@types/node": "^9.4.7",
+    "browser-sync": "^2.23.6",
+    "cross-env": "^5.1.4",
     "nodemon": "^1.17.2",
     "npm-run-all": "^4.1.2",
     "typescript": "^2.7.2"

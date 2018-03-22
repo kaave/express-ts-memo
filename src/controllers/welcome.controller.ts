@@ -33,4 +33,4 @@ router.get('/:name', (req: Request, res: Response) => {
 });
 
 // Export the express.Router() instance to be used by server.ts
-export const WelcomeController: Router = router;  // tslint:disable-line
+export const WelcomeController: Router = router; // tslint:disable-line

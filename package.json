@@ -12,6 +12,10 @@
     "prebuild": "npm run clean",
     "build": "cross-env NODE_ENV=production webpack --progress --config tools/webpack/server/index.ts",
     "clean": "rimraf -g dist",
+    "lint": "tslint --format stylish 'src/**/*.{ts,tsx}'",
+    "fix": "run-p fix:*",
+    "fix:other": "prettier --write 'src/**/*.{css,json}'",
+    "fix:script": "tslint --format stylish --fix '{src,tools}/**/*.{ts,tsx}'",
     "tsc": "tsc"
   },
   "dependencies": {
@@ -26,8 +30,12 @@
     "cross-env": "^5.1.4",
     "nodemon": "^1.17.2",
     "npm-run-all": "^4.1.2",
+    "prettier": "^1.11.1",
     "rimraf": "^2.6.2",
     "ts-node": "^5.0.1",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.10.0",
+    "tslint-plugin-prettier": "^1.3.0",
     "typescript": "^2.7.2",
     "webpack": "^3"
   }

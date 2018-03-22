@@ -2,7 +2,8 @@ import webpack from 'webpack';  // tslint:disable-line
 import path from 'path';
 import fs from 'fs';
 
-const externals: webpack.ExternalsObjectElement = fs.readdirSync('node_modules')
+const externals: webpack.ExternalsObjectElement = fs
+  .readdirSync('node_modules')
   .filter(x => !['.bin'].includes(x))
   .reduce((tempMods: { [key: string]: string }, mod) => {
     tempMods[mod] = `commonjs ${mod}`;
@@ -20,7 +21,7 @@ const config: webpack.Configuration = {
   entry: path.join(process.cwd(), 'src', 'server.ts'),
   output: {
     path: path.join(process.cwd(), 'dist'),
-    filename: 'server.js'
+    filename: 'server.js',
   },
   target: 'node',
   cache: true,

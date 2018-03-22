@@ -1,1 +1,1 @@
-export * from './webcome.controller';
+export * from './welcome.controller';

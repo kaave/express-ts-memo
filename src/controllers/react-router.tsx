@@ -23,7 +23,7 @@ export default function(req: Request, res: Response) {
 
   const markup = renderToString(<MatchComponent />);
   const helmetData = Helmet.renderStatic();
-  const renderAttributes = {
+  res.render('index', {
     markup,
     base: helmetData.base.toString(),
     bodyAttributes: helmetData.bodyAttributes.toString(),
@@ -34,9 +34,7 @@ export default function(req: Request, res: Response) {
     script: helmetData.script.toString(),
     style: helmetData.style.toString(),
     title: helmetData.title.toString(),
-  };
-  console.log(renderAttributes);
-  res.render('index', renderAttributes);
+  });
 }
 
 // match({ routes, location: req.url }, (err, redirectLocation, props) => {

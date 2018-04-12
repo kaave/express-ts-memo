@@ -5,5 +5,6 @@ export default () => (
   <Helmet>
     <html lang="ja" />
     <title>Hello</title>
+    <script src="client.js" type="text/javascript" />
   </Helmet>
 );

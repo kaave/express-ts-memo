@@ -22,9 +22,9 @@ const plugins: webpack.Plugin[] = [
 ];
 
 const config: webpack.Configuration = {
-  context: `${process.cwd()}/src`,
+  context: path.join(process.cwd(), 'src'),
   devtool: 'inline-source-map',
-  entry: path.join(process.cwd(), 'src', 'index.ts'),
+  entry: path.join(process.cwd(), 'src', 'client', 'index.ts'),
   output: {
     path: path.join(process.cwd(), 'dist'),
     filename: 'client.js',

@@ -2,6 +2,7 @@ import React from 'react';
 import { Request, Response } from 'express';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter as Router, matchPath } from 'react-router';
+import { Helmet } from 'react-helmet';
 import { matchRoutes } from 'react-router-config';
 
 import routes from '~/routes';
@@ -21,8 +22,21 @@ export default function(req: Request, res: Response) {
   }
 
   const markup = renderToString(<MatchComponent />);
-  console.log(branch, markup);
-  res.render('index', { markup });
+  const helmetData = Helmet.renderStatic();
+  const renderAttributes = {
+    markup,
+    base: helmetData.base.toString(),
+    bodyAttributes: helmetData.bodyAttributes.toString(),
+    htmlAttributes: helmetData.htmlAttributes.toString(),
+    link: helmetData.link.toString(),
+    meta: helmetData.meta.toString(),
+    noscript: helmetData.noscript.toString(),
+    script: helmetData.script.toString(),
+    style: helmetData.style.toString(),
+    title: helmetData.title.toString(),
+  };
+  console.log(renderAttributes);
+  res.render('index', renderAttributes);
 }
 
 // match({ routes, location: req.url }, (err, redirectLocation, props) => {

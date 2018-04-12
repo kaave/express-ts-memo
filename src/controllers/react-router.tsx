@@ -14,16 +14,15 @@ export default function(req: Request, res: Response) {
   }
 
   // tslint:disable-next-line
-  const MatchComponent = (branch[0].route.component as any) as React.ReactElement<any>;
+  const MatchComponent = (branch[0].route.component as any) as React.ComponentClass<any> | undefined;
   if (!MatchComponent) {
     res.sendStatus(404);
     return;
   }
 
-  // const component = (branch[0].route.component as any) as JSX.IntrinsicElements;
   const markup = renderToString(<MatchComponent />);
   console.log(branch, markup);
-  res.render('index');
+  res.render('index', { markup });
 }
 
 // match({ routes, location: req.url }, (err, redirectLocation, props) => {
